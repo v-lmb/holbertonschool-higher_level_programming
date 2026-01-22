@@ -1,0 +1,43 @@
+
+Tests for add_integer
+
+Normal cases
+------------
+
+>>> add_integer(1, 2)
+3
+
+>>> add_integer(100, -2)
+98
+
+
+Default parameters
+------------------
+
+>>> add_integer(2)
+100
+
+
+Type checking
+-------------
+
+>>> add_integer("1", 2)
+Traceback (most recent call last):
+TypeError: param1 must be an integer
+
+>>> add_integer(1, "2")
+Traceback (most recent call last):
+TypeError: param2 must be an integer
+
+
+Edge cases
+----------
+
+>>> add_integer(0, 0)
+0
+
+>>> add_integer(-1, -1)
+-2
+
+>>> add_integer(100.9, 2)
+102
