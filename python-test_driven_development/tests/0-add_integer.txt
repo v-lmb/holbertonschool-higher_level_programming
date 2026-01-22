@@ -23,11 +23,11 @@ Type checking
 
 >>> add_integer("1", 2)
 Traceback (most recent call last):
-TypeError: param1 must be an integer
+TypeError: a must be an integer
 
 >>> add_integer(1, "2")
 Traceback (most recent call last):
-TypeError: param2 must be an integer
+TypeError: b must be an integer
 
 
 Edge cases
