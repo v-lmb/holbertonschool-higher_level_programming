@@ -7,6 +7,10 @@ Create a rectangle class
 class Rectangle:
     """
     class for Rectangle
+    width: width of rectangle
+    height: height of rectangle
+    Return: beautiful rectangle
+    Raises: ValueError, TypeError
     """
 
     def __init__(self, width=0, height=0):
