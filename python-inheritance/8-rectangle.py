@@ -45,13 +45,8 @@ class Rectangle(BaseGeometry):
         self.__height = height
 
         self.integer_validator("width", width)
-        if type(self.__width) is not int:
-            raise TypeError(f"{self.name} must be an integer")
-        if self.__width <= 0:
-            raise ValueError(f"{self.name} must be greater than 0")
-
         self.integer_validator("height", height)
-        if type(self.__height) is not int:
+        if type(self.__width) is not int or type(self.__height) is not int:
             raise TypeError(f"{self.name} must be an integer")
-        if self.__height <= 0:
+        if self.__width <= 0 or self.__height <= 0:
             raise ValueError(f"{self.name} must be greater than 0")
