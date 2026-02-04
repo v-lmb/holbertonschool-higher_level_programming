@@ -8,9 +8,8 @@ if the object is exactly an instance of the specified class
 def is_same_class(obj, a_class):
     """
     class for Rectangle
-    obj: width of rectangle
-    a_class: height of rectangle
+    obj: object
+    a_class: class
     Return: True if is exactly the specified class
     """
-    if isinstance(type(obj), a_class):
-        return True
+    return type(obj) is a_class
