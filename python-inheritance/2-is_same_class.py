@@ -12,5 +12,5 @@ def is_same_class(obj, a_class):
     a_class: height of rectangle
     Return: True if is exactly the specified class
     """
-    if type(obj) is a_class:
+    if isinstance(type(obj), a_class):
         return True
