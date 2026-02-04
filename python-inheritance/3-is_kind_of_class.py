@@ -8,7 +8,6 @@ the specified class ; otherwise False.
 
 def is_kind_of_class(obj, a_class):
     """
-    get width rectangle
+    is an instance of a class
     """
-    if isinstance(obj, a_class):
-        return True
+    return isinstance(obj, a_class)
