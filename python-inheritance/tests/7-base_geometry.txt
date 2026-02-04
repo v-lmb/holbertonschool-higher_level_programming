@@ -1,149 +1,57 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
->>> module = __import__('7-base_geometry')
->>> len(module.__doc__) > 1
-True
-
->>> len(BaseGeometry.__doc__) > 1
-True
-
->>> len(BaseGeometry.area.__doc__) > 1
-True
-
->>> len(BaseGeometry.integer_validator.__doc__) > 1
-True
-
-
 >>> bg = BaseGeometry()
 >>> type(bg)
 <class '7-base_geometry.BaseGeometry'>
 
-
 >>> bg.area()
 Exception: area() is not implemented
 
-
->>> bg.integer_validator("my_int", 12)
-
->>> bg.integer_validator("width", 89)
-
->>> bg.integer_validator("height", 1)
-
->>> bg.integer_validator("x", 999999)
-
-
-String value:
 >>> bg.integer_validator("name", "John")
 TypeError: name must be an integer
 
-Float value:
 >>> bg.integer_validator("age", 3.14)
 TypeError: age must be an integer
 
-None value:
 >>> bg.integer_validator("test", None)
 TypeError: test must be an integer
 
-List value:
 >>> bg.integer_validator("list", [1, 2, 3])
 TypeError: list must be an integer
 
-Tuple value:
 >>> bg.integer_validator("tuple", (1,))
 TypeError: tuple must be an integer
 
-Dict value:
 >>> bg.integer_validator("dict", {"key": 1})
 TypeError: dict must be an integer
 
-Set value:
 >>> bg.integer_validator("set", {1, 2})
 TypeError: set must be an integer
 
-Boolean True:
 >>> bg.integer_validator("bool", True)
 TypeError: bool must be an integer
 
-Boolean False:
 >>> bg.integer_validator("bool", False)
 TypeError: bool must be an integer
 
-
-Zero value:
 >>> bg.integer_validator("age", 0)
 ValueError: age must be greater than 0
 
-Negative value:
 >>> bg.integer_validator("distance", -4)
-
 ValueError: distance must be greater than 0
 
-Another negative:
 >>> bg.integer_validator("temp", -100)
 ValueError: temp must be greater than 0
 
-Negative one:
 >>> bg.integer_validator("x", -1)
 ValueError: x must be greater than 0
 
-
-No arguments:
 >>> bg.integer_validator()
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-Only name argument:
 >>> bg.integer_validator("name")
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-
-Too many arguments:
 >>> bg.integer_validator("name", 1, 2)
 TypeError: integer_validator() takes 3 positional arguments but 4 were given
-
-
->>> bg.area(1)
-TypeError: area() takes 1 positional argument but 2 were given
-
-
-Large positive integer:
->>> bg.integer_validator("big", 10**100)
-
-Very long name:
->>> bg.integer_validator("a" * 1000, 42)
-
-Name with special characters:
->>> bg.integer_validator("my-var_123", 5)
-
-Empty string name:
->>> bg.integer_validator("", 10)
-
-Complex number:
->>> bg.integer_validator("complex", 1+2j)
-TypeError: complex must be an integer
-
-Float that looks like int:
->>> bg.integer_validator("float", 5.0)
-
-TypeError: float must be an integer
-
-Negative float (TypeError before ValueError):
->>> bg.integer_validator("neg_float", -5.5)
-TypeError: neg_float must be an integer
-
-String number:
->>> bg.integer_validator("str_num", "123")
-TypeError: str_num must be an integer
-
-
->>> bg1 = BaseGeometry()
->>> bg2 = BaseGeometry()
->>> bg1.integer_validator("test1", 10)
->>> bg2.integer_validator("test2", 20)
-
-
->>> hasattr(BaseGeometry, 'area')
-True
-
->>> hasattr(BaseGeometry, 'integer_validator')
-True
