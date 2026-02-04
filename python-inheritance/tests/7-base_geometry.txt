@@ -1,333 +1,55 @@
->>> BaseGeometry = __import__('ton_fichier').BaseGeometry
->>> Rectangle = __import__('ton_fichier').Rectangle
->>> Square = __import__('ton_fichier').Square
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
-Test area() not implemented:
 >>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+
 >>> bg.area()
 Traceback (most recent call last):
     ...
 Exception: area() is not implemented
 
-Test integer_validator with valid integers:
->>> bg = BaseGeometry()
->>> bg.integer_validator("age", 25)
->>> bg.integer_validator("width", 100)
->>> bg.integer_validator("height", 1)
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
 
-Test integer_validator with string:
->>> bg = BaseGeometry()
->>> bg.integer_validator("age", "5")
+>>> bg.integer_validator("age", 3.14)
 Traceback (most recent call last):
     ...
 TypeError: age must be an integer
 
-Test integer_validator with float:
->>> bg = BaseGeometry()
->>> bg.integer_validator("height", 3.14)
-Traceback (most recent call last):
-    ...
-TypeError: height must be an integer
-
-Test integer_validator with zero:
->>> bg = BaseGeometry()
->>> bg.integer_validator("width", 0)
-Traceback (most recent call last):
-    ...
-ValueError: width must be greater than 0
-
-Test integer_validator with negative:
->>> bg = BaseGeometry()
->>> bg.integer_validator("distance", -5)
-Traceback (most recent call last):
-    ...
-ValueError: distance must be greater than 0
-
-Test integer_validator with None:
->>> bg = BaseGeometry()
 >>> bg.integer_validator("value", None)
 Traceback (most recent call last):
     ...
 TypeError: value must be an integer
 
-Test integer_validator with list:
->>> bg = BaseGeometry()
->>> bg.integer_validator("numbers", [1, 2, 3])
+>>> bg.integer_validator("list", [1, 2])
 Traceback (most recent call last):
     ...
-TypeError: numbers must be an integer
+TypeError: list must be an integer
 
-Test integer_validator with tuple:
->>> bg = BaseGeometry()
->>> bg.integer_validator("coords", (3, 4))
+>>> bg.integer_validator("bool", True)
 Traceback (most recent call last):
     ...
-TypeError: coords must be an integer
+TypeError: bool must be an integer
 
-Test integer_validator with dict:
->>> bg = BaseGeometry()
->>> bg.integer_validator("data", {"key": "value"})
+>>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
     ...
-TypeError: data must be an integer
+ValueError: age must be greater than 0
 
-Test integer_validator with boolean True:
->>> bg = BaseGeometry()
->>> bg.integer_validator("flag", True)
+>>> bg.integer_validator("distance", -4)
 Traceback (most recent call last):
     ...
-TypeError: flag must be an integer
+ValueError: distance must be greater than 0
 
-Test integer_validator with boolean False:
->>> bg = BaseGeometry()
->>> bg.integer_validator("flag", False)
-Traceback (most recent call last):
-    ...
-TypeError: flag must be an integer
-
-======================
-Tests for Rectangle
-======================
-
-Test valid rectangle creation:
->>> r = Rectangle(10, 5)
->>> r.area()
-50
->>> print(r)
-[Rectangle] 10/5
-
-Test another valid rectangle:
->>> r = Rectangle(3, 4)
->>> r.area()
-12
->>> print(r)
-[Rectangle] 3/4
-
-Test rectangle 1x1:
->>> r = Rectangle(1, 1)
->>> r.area()
-1
->>> print(r)
-[Rectangle] 1/1
-
-Test rectangle with string width:
->>> r = Rectangle("10", 5)
-Traceback (most recent call last):
-    ...
-TypeError: width must be an integer
-
-Test rectangle with string height:
->>> r = Rectangle(10, "5")
-Traceback (most recent call last):
-    ...
-TypeError: height must be an integer
-
-Test rectangle with float width:
->>> r = Rectangle(3.14, 5)
-Traceback (most recent call last):
-    ...
-TypeError: width must be an integer
-
-Test rectangle with float height:
->>> r = Rectangle(10, 2.5)
-Traceback (most recent call last):
-    ...
-TypeError: height must be an integer
-
-Test rectangle with zero width:
->>> r = Rectangle(0, 5)
-Traceback (most recent call last):
-    ...
-ValueError: width must be greater than 0
-
-Test rectangle with zero height:
->>> r = Rectangle(10, 0)
-Traceback (most recent call last):
-    ...
-ValueError: height must be greater than 0
-
-Test rectangle with negative width:
->>> r = Rectangle(-10, 5)
-Traceback (most recent call last):
-    ...
-ValueError: width must be greater than 0
-
-Test rectangle with negative height:
->>> r = Rectangle(10, -5)
-Traceback (most recent call last):
-    ...
-ValueError: height must be greater than 0
-
-Test rectangle with None width:
->>> r = Rectangle(None, 5)
-Traceback (most recent call last):
-    ...
-TypeError: width must be an integer
-
-Test rectangle with None height:
->>> r = Rectangle(10, None)
-Traceback (most recent call last):
-    ...
-TypeError: height must be an integer
-
-Test rectangle with list width:
->>> r = Rectangle([10], 5)
-Traceback (most recent call last):
-    ...
-TypeError: width must be an integer
-
-Test rectangle with list height:
->>> r = Rectangle(10, [5])
-Traceback (most recent call last):
-    ...
-TypeError: height must be an integer
-
-Test rectangle with both invalid:
->>> r = Rectangle("width", "height")
-Traceback (most recent call last):
-    ...
-TypeError: width must be an integer
-
-Test very large rectangle:
->>> r = Rectangle(1000000, 1000000)
->>> r.area()
-1000000000000
-
-==================
-Tests for Square
-==================
-
-Test valid square creation:
->>> s = Square(5)
->>> s.area()
-25
->>> print(s)
-[Rectangle] 5/5
-
-Test another valid square:
->>> s = Square(10)
->>> s.area()
-100
->>> print(s)
-[Rectangle] 10/10
-
-Test square size 1:
->>> s = Square(1)
->>> s.area()
-1
->>> print(s)
-[Rectangle] 1/1
-
-Test square with string size:
->>> s = Square("5")
-Traceback (most recent call last):
-    ...
-TypeError: size must be an integer
-
-Test square with float size:
->>> s = Square(3.14)
-Traceback (most recent call last):
-    ...
-TypeError: size must be an integer
-
-Test square with zero size:
->>> s = Square(0)
-Traceback (most recent call last):
-    ...
-ValueError: size must be greater than 0
-
-Test square with negative size:
->>> s = Square(-5)
-Traceback (most recent call last):
-    ...
-ValueError: size must be greater than 0
-
-Test square with None size:
->>> s = Square(None)
-Traceback (most recent call last):
-    ...
-TypeError: size must be an integer
-
-Test square with list size:
->>> s = Square([5])
-Traceback (most recent call last):
-    ...
-TypeError: size must be an integer
-
-Test square with tuple size:
->>> s = Square((5,))
-Traceback (most recent call last):
-    ...
-TypeError: size must be an integer
-
-Test square with dict size:
->>> s = Square({"size": 5})
-Traceback (most recent call last):
-    ...
-TypeError: size must be an integer
-
-Test square with boolean:
->>> s = Square(True)
-Traceback (most recent call last):
-    ...
-TypeError: size must be an integer
-
-Test very large square:
->>> s = Square(1000000)
->>> s.area()
-1000000000000
-
-====================
-Inheritance Tests
-====================
-
-Test Rectangle is instance of BaseGeometry:
->>> r = Rectangle(5, 3)
->>> isinstance(r, BaseGeometry)
-True
-
-Test Square is instance of Rectangle:
->>> s = Square(5)
->>> isinstance(s, Rectangle)
-True
-
-Test Square is instance of BaseGeometry:
->>> s = Square(5)
->>> isinstance(s, BaseGeometry)
-True
-
-====================
-Missing Arguments
-====================
-
-Test Rectangle with no arguments:
->>> r = Rectangle()
-Traceback (most recent call last):
-    ...
-TypeError: __init__() missing 2 required positional arguments: 'width' and 'height'
-
-Test Rectangle with one argument:
->>> r = Rectangle(5)
-Traceback (most recent call last):
-    ...
-TypeError: __init__() missing 1 required positional argument: 'height'
-
-Test Square with no arguments:
->>> s = Square()
-Traceback (most recent call last):
-    ...
-TypeError: __init__() missing 1 required positional argument: 'size'
-
-Test integer_validator with no name:
->>> bg = BaseGeometry()
->>> bg.integer_validator(5)
+>>> bg.integer_validator("name")
 Traceback (most recent call last):
     ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-Test integer_validator with no arguments:
->>> bg = BaseGeometry()
 >>> bg.integer_validator()
 Traceback (most recent call last):
     ...
