@@ -1,56 +1,213 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
+Create BaseGeometry instance:
 >>> bg = BaseGeometry()
->>> bg.integer_validator("my_int", 12)
->>> bg.integer_validator("width", 89)
+>>> type(bg)
+<class '7-base_geometry.BaseGeometry'>
 
+
+area() raises Exception:
 >>> bg.area()
 Traceback (most recent call last):
     ...
 Exception: area() is not implemented
 
+
+Valid positive integer:
+>>> bg.integer_validator("my_int", 12)
+
+Another valid integer:
+>>> bg.integer_validator("width", 89)
+
+Large positive integer:
+>>> bg.integer_validator("big_number", 999999)
+
+Integer value of 1:
+>>> bg.integer_validator("one", 1)
+
+
+String instead of integer:
 >>> bg.integer_validator("name", "John")
 Traceback (most recent call last):
     ...
 TypeError: name must be an integer
 
+Float instead of integer:
 >>> bg.integer_validator("age", 3.14)
 Traceback (most recent call last):
     ...
 TypeError: age must be an integer
 
+Another float:
+>>> bg.integer_validator("height", 5.5)
+Traceback (most recent call last):
+    ...
+TypeError: height must be an integer
+
+None value:
 >>> bg.integer_validator("value", None)
 Traceback (most recent call last):
     ...
 TypeError: value must be an integer
 
->>> bg.integer_validator("list", [1, 2])
+List:
+>>> bg.integer_validator("list", [1, 2, 3])
 Traceback (most recent call last):
     ...
 TypeError: list must be an integer
 
+Tuple:
+>>> bg.integer_validator("tuple", (1, 2))
+Traceback (most recent call last):
+    ...
+TypeError: tuple must be an integer
+
+Dictionary:
+>>> bg.integer_validator("dict", {"key": "value"})
+Traceback (most recent call last):
+    ...
+TypeError: dict must be an integer
+
+Set:
+>>> bg.integer_validator("set", {1, 2, 3})
+Traceback (most recent call last):
+    ...
+TypeError: set must be an integer
+
+Boolean True:
 >>> bg.integer_validator("bool", True)
 Traceback (most recent call last):
     ...
 TypeError: bool must be an integer
 
+Boolean False:
+>>> bg.integer_validator("bool", False)
+Traceback (most recent call last):
+    ...
+TypeError: bool must be an integer
+
+Complex number:
+>>> bg.integer_validator("complex", 5+3j)
+Traceback (most recent call last):
+    ...
+TypeError: complex must be an integer
+
+Empty string:
+>>> bg.integer_validator("empty", "")
+Traceback (most recent call last):
+    ...
+TypeError: empty must be an integer
+
+
+Zero value:
 >>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
     ...
 ValueError: age must be greater than 0
 
+Negative integer:
 >>> bg.integer_validator("distance", -4)
 Traceback (most recent call last):
     ...
 ValueError: distance must be greater than 0
 
+Another negative:
+>>> bg.integer_validator("temp", -100)
+Traceback (most recent call last):
+    ...
+ValueError: temp must be greater than 0
+
+Negative one:
+>>> bg.integer_validator("minus_one", -1)
+Traceback (most recent call last):
+    ...
+ValueError: minus_one must be greater than 0
+
+
+Missing value argument:
 >>> bg.integer_validator("name")
 Traceback (most recent call last):
     ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
+Missing both arguments:
 >>> bg.integer_validator()
 Traceback (most recent call last):
     ...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+
+Very large integer:
+>>> bg.integer_validator("huge", 10**100)
+
+Name with spaces:
+>>> bg.integer_validator("my variable", 42)
+
+Name with special characters:
+>>> bg.integer_validator("var_name-123", 42)
+
+Empty name string:
+>>> bg.integer_validator("", 42)
+
+Name as number (still valid - name can be anything):
+>>> bg.integer_validator(123, 42)
+
+Single character name:
+>>> bg.integer_validator("x", 5)
+
+Long name:
+>>> bg.integer_validator("a" * 1000, 10)
+
+
+Multiple instances work independently:
+>>> bg1 = BaseGeometry()
+>>> bg2 = BaseGeometry()
+>>> bg1.integer_validator("test1", 10)
+>>> bg2.integer_validator("test2", 20)
+
+Check if bg is instance of BaseGeometry:
+>>> isinstance(bg, BaseGeometry)
+True
+
+Bytes:
+>>> bg.integer_validator("bytes", b"hello")
+Traceback (most recent call last):
+    ...
+TypeError: bytes must be an integer
+
+Bytearray:
+>>> bg.integer_validator("bytearray", bytearray(b"hello"))
+Traceback (most recent call last):
+    ...
+TypeError: bytearray must be an integer
+
+Frozenset:
+>>> bg.integer_validator("frozenset", frozenset([1, 2, 3]))
+Traceback (most recent call last):
+    ...
+TypeError: frozenset must be an integer
+
+Range:
+>>> bg.integer_validator("range", range(5))
+Traceback (most recent call last):
+    ...
+TypeError: range must be an integer
+
+Negative float should raise TypeError (not ValueError):
+>>> bg.integer_validator("neg_float", -3.5)
+Traceback (most recent call last):
+    ...
+TypeError: neg_float must be an integer
+
+String of number:
+>>> bg.integer_validator("str_num", "123")
+Traceback (most recent call last):
+    ...
+TypeError: str_num must be an integer
+
+Float with .0:
+>>> bg.integer_validator("float_int", 5.0)
+Traceback (most recent call last):
+    ...
+TypeError: float_int must be an integer
