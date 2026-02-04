@@ -8,50 +8,56 @@
 >>> bg.area()
 Exception: area() is not implemented
 
+>>> bg.integer_validator()
+[TypeError] BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator("", "")
+[TypeError] must be an integer
+
 >>> bg.integer_validator("name", "John")
-TypeError: name must be an integer
+[TypeError] name must be an integer
 
 >>> bg.integer_validator("age", 3.14)
-TypeError: age must be an integer
+[TypeError] age must be an integer
 
 >>> bg.integer_validator("test", None)
-TypeError: test must be an integer
+[TypeError] test must be an integer
 
 >>> bg.integer_validator("list", [1, 2, 3])
-TypeError: list must be an integer
+[TypeError] list must be an integer
 
 >>> bg.integer_validator("tuple", (1,))
-TypeError: tuple must be an integer
+[TypeError] tuple must be an integer
 
 >>> bg.integer_validator("dict", {"key": 1})
-TypeError: dict must be an integer
+[TypeError] dict must be an integer
 
 >>> bg.integer_validator("set", {1, 2})
-TypeError: set must be an integer
+[TypeError] set must be an integer
 
 >>> bg.integer_validator("bool", True)
-TypeError: bool must be an integer
+[TypeError] bool must be an integer
 
 >>> bg.integer_validator("bool", False)
-TypeError: bool must be an integer
+[TypeError] bool must be an integer
 
 >>> bg.integer_validator("age", 0)
-ValueError: age must be greater than 0
+[ValueError] age must be greater than 0
 
 >>> bg.integer_validator("distance", -4)
-ValueError: distance must be greater than 0
+[ValueError] distance must be greater than 0
 
 >>> bg.integer_validator("temp", -100)
-ValueError: temp must be greater than 0
+[ValueError] temp must be greater than 0
 
 >>> bg.integer_validator("x", -1)
-ValueError: x must be greater than 0
+[ValueError] x must be greater than 0
 
 >>> bg.integer_validator()
-TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+[TypeError] integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 >>> bg.integer_validator("name")
-TypeError: integer_validator() missing 1 required positional argument: 'value'
+[TypeError] integer_validator() missing 1 required positional argument: 'value'
 
 >>> bg.integer_validator("name", 1, 2)
-TypeError: integer_validator() takes 3 positional arguments but 4 were given
+[TypeError] integer_validator() takes 3 positional arguments but 4 were given
