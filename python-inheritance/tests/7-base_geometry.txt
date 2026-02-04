@@ -21,8 +21,6 @@ True
 
 
 >>> bg.area()
-Traceback (most recent call last):
-    ...
 Exception: area() is not implemented
 
 
@@ -37,107 +35,74 @@ Exception: area() is not implemented
 
 String value:
 >>> bg.integer_validator("name", "John")
-Traceback (most recent call last):
-    ...
 TypeError: name must be an integer
 
 Float value:
 >>> bg.integer_validator("age", 3.14)
-Traceback (most recent call last):
-    ...
 TypeError: age must be an integer
 
 None value:
 >>> bg.integer_validator("test", None)
-Traceback (most recent call last):
-    ...
 TypeError: test must be an integer
 
 List value:
 >>> bg.integer_validator("list", [1, 2, 3])
-Traceback (most recent call last):
-    ...
 TypeError: list must be an integer
 
 Tuple value:
 >>> bg.integer_validator("tuple", (1,))
-Traceback (most recent call last):
-    ...
 TypeError: tuple must be an integer
 
 Dict value:
 >>> bg.integer_validator("dict", {"key": 1})
-Traceback (most recent call last):
-    ...
 TypeError: dict must be an integer
 
 Set value:
 >>> bg.integer_validator("set", {1, 2})
-Traceback (most recent call last):
-    ...
 TypeError: set must be an integer
 
 Boolean True:
 >>> bg.integer_validator("bool", True)
-Traceback (most recent call last):
-    ...
 TypeError: bool must be an integer
 
 Boolean False:
 >>> bg.integer_validator("bool", False)
-Traceback (most recent call last):
-    ...
 TypeError: bool must be an integer
 
 
 Zero value:
 >>> bg.integer_validator("age", 0)
-Traceback (most recent call last):
-    ...
 ValueError: age must be greater than 0
 
 Negative value:
 >>> bg.integer_validator("distance", -4)
-Traceback (most recent call last):
-    ...
+
 ValueError: distance must be greater than 0
 
 Another negative:
 >>> bg.integer_validator("temp", -100)
-Traceback (most recent call last):
-    ...
 ValueError: temp must be greater than 0
 
 Negative one:
 >>> bg.integer_validator("x", -1)
-Traceback (most recent call last):
-    ...
 ValueError: x must be greater than 0
 
 
 No arguments:
 >>> bg.integer_validator()
-Traceback (most recent call last):
-    ...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 Only name argument:
 >>> bg.integer_validator("name")
-Traceback (most recent call last):
-    ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
 
 Too many arguments:
 >>> bg.integer_validator("name", 1, 2)
-Traceback (most recent call last):
-    ...
 TypeError: integer_validator() takes 3 positional arguments but 4 were given
 
 
 >>> bg.area(1)
-Traceback (most recent call last):
-    ...
 TypeError: area() takes 1 positional argument but 2 were given
 
 
@@ -155,26 +120,19 @@ Empty string name:
 
 Complex number:
 >>> bg.integer_validator("complex", 1+2j)
-Traceback (most recent call last):
-    ...
 TypeError: complex must be an integer
 
 Float that looks like int:
 >>> bg.integer_validator("float", 5.0)
-Traceback (most recent call last):
-    ...
+
 TypeError: float must be an integer
 
 Negative float (TypeError before ValueError):
 >>> bg.integer_validator("neg_float", -5.5)
-Traceback (most recent call last):
-    ...
 TypeError: neg_float must be an integer
 
 String number:
 >>> bg.integer_validator("str_num", "123")
-Traceback (most recent call last):
-    ...
 TypeError: str_num must be an integer
 
 
