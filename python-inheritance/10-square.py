@@ -72,7 +72,7 @@ class Square(Rectangle):
     def __init__(self, size):
         self.__size = size
 
-        self.integer_validator("size", size)
+        self.integer_validator("size", self.__size)
         if type(self.__size) is not int:
             raise TypeError(f"{self.name} must be an integer")
         if self.__size <= 0:
