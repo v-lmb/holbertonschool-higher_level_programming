@@ -46,14 +46,19 @@
 >>> bg.integer_validator("x", -1)
 [ValueError] x must be greater than 0
 
->>> bg.integer_validator()
-[TypeError] integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
 >>> bg.integer_validator("name")
-[TypeError] integer_validator() missing 1 required positional argument: 'value'
+[TypeError] BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
 
 >>> bg.integer_validator("name", 1, 2)
-[TypeError] integer_validator() takes 3 positional arguments but 4 were given
+[TypeError] BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
 
 >>> bg.integer_validator("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "0")
 [TypeError] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA must be an integer
+
+>>> bg.integer_validator("-0.5842", 10, 2)
+[TypeError] BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
+
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+>>> bg.integer_validator("height", 1)
+>>> bg.integer_validator("x", 999999)
