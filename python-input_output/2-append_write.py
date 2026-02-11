@@ -10,5 +10,5 @@ def append_write(filename="", text=""):
     filename: File Name
     text: text to add
     """
-    with open("my_first_file.txt", "a") as f:
+    with open(filename, "a") as f:
         return f.write(text)
