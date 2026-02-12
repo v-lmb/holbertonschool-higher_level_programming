@@ -25,7 +25,7 @@ class CustomObject:
         """
         try:
             with open(filename, "wb") as f:
-                pickle.dump(self, f)
+                pickle.dump(self.__dict__, f)
         except Exception:
             return None
 
