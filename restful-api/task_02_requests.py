@@ -2,6 +2,7 @@
 import requests
 import csv
 
+
 def fetch_and_print_posts():
     """
     fetch_and_print_posts
@@ -23,14 +24,13 @@ def fetch_and_save_posts():
         posts = response.json()
         stuct_data = []
         for post in posts:
-            stuct_data = {
+            stuct_data.append({
                 'id': post['id'],
                 'title': post['title'],
                 'body': post['body']
-            }
-            stuct_data.append(stuct_data)
+            })
     with open("post.csv", 'w', newline='', encoding='utf-8') as f:
         fieldnames = ['id', 'title', 'body']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerow(stuct_data)
+        writer.writerows(stuct_data)
