@@ -1,9 +1,15 @@
 #!usr/bin/puthon3
+"""
+restful-api.task_03_http_server
+"""
 import http.server
 import json
 
 
 class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
+    """
+	Class SimpleAPIHandler
+	"""
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
