@@ -2,14 +2,14 @@
 """
 restful-api.task_03_http_server
 """
-import http.server
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 
-class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
+class BeautifulServer(BaseHTTPRequestHandler):
     """
-	Class SimpleAPIHandler
-	"""
+    Class BeautifulServer
+    """
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
@@ -52,6 +52,6 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     server_address = ('', 8000)
-    httpd = http.server.HTTPServer(server_address, SimpleAPIHandler)
-    print("Serving on port 8000")
+    httpd = HTTPServer(server_address, BeautifulServer)
+    print("Server running on http://localhost:8000")
     httpd.serve_forever
