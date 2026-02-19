@@ -54,4 +54,4 @@ if __name__ == "__main__":
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, BeautifulServer)
     print("Server running on http://localhost:8000")
-    httpd.serve_forever
+    httpd.serve_forever()
