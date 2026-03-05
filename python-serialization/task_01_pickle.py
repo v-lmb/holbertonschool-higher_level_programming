@@ -19,13 +19,13 @@ class CustomObject:
         print(f"Age: {self.age}")
         print(f"Is Student: {self.is_student}")
 
-    def serialze(self, filename):
+    def serialize(self, filename):
         """
-        method serialze
+        method serialize
         """
         try:
             with open(filename, "wb") as f:
-                pickle.dump(self.__dict__, f)
+                pickle.dump(self, f)
         except Exception:
             return None
 
@@ -36,6 +36,6 @@ class CustomObject:
         """
         try:
             with open(filename, "rb") as f:
-                pickle.load(f)
+                return pickle.load(f)
         except Exception:
             return None
