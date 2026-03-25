@@ -1,5 +1,11 @@
-let el = document.querySelector('#red_header');
+let el = document.querySelector('#toggle_header');
 el.addEventListener('click', function() {
   let header = document.querySelector('header');
-  header.classList.add('red');
+  if (header.classList.contains('red')) {
+    header.classList.remove('red');
+	header.classList.add('green');
+  } else {
+	header.classList.remove('green');
+    header.classList.add('red');
+  }
 });
